@@ -1,0 +1,37 @@
+# --- things MacroQuest and the tool write while you use them -----------
+# Never commit these: login.db is MQ2AutoLogin's account store.
+config/login.db
+config/login.db-*
+config/*.db
+config/*.db-*
+
+# Your own settings, one file per character
+config/tscac_loadout*.lua
+
+# Written at runtime / per machine
+config/MacroQuest_Overlay.ini
+config/MQ2ChatWnd.ini
+config/MQ2HUD.ini
+config/MQ2Lua.yaml
+config/EasyFind.yaml
+config/MQ2AdvPath.ini
+config/MQ2AdvPath/
+
+# Per-character INIs (Server_Charname.ini). The two MacroQuest_* files
+# below are shipped defaults, not per-character, so they stay.
+config/*_*.ini
+!config/MacroQuest_default.ini
+!config/MacroQuest_LauncherUI.ini
+
+Logs/*
+!Logs/.gitkeep
+Macros/*
+!Macros/.gitkeep
+
+# Zone navmeshes: 2 GB, and they do not compress. See the README.
+resources/MQ2Nav/
+
+# Build artifacts
+*.pdb
+*.lib
+*.exp
