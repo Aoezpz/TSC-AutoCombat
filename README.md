@@ -7,7 +7,11 @@ when it is safe. Everything is set up in one in-game window — no macros to
 write.
 
 This repository is a **complete MacroQuest** with the tool already in it.
-Clone or download it, run `MacroQuest.exe`, and log in.
+Download it, run `MacroQuest.exe`, and log in.
+
+# ⬇ [Download TSC-AutoCombat-v1.0.0.zip](https://github.com/Aoezpz/TSC-AutoCombat/releases/latest/download/TSC-AutoCombat-v1.0.0.zip) (56 MB)
+
+*(or see [all releases](https://github.com/Aoezpz/TSC-AutoCombat/releases/latest))*
 
 > **Test build.** It has not had much time in game yet. Please report anything
 > that looks wrong rather than assuming it is meant to work that way.
@@ -16,11 +20,11 @@ Clone or download it, run `MacroQuest.exe`, and log in.
 
 ## Install
 
-1. **Download.** Either `git clone` this repository, or *Code → Download ZIP*
-   and extract it somewhere like `C:\TSC-AutoCombat`.
+1. **Download the zip above** and extract it somewhere like `C:\TSC-AutoCombat`.
+   (Or `git clone` this repository — same files.)
 2. **Add that folder to your antivirus exclusions.** Every MacroQuest build
    trips Defender and SmartScreen; this one is no different.
-3. **Get the zone navmeshes** — they are not in this repository (2 GB, and they
+3. **Get the zone navmeshes** — they are not in the download (2 GB, and they
    do not compress). Either copy `resources\MQ2Nav` from a MacroQuest install
    you already have, or run `MeshUpdater.exe` from this folder. Without them
    the bot still fights, but it cannot path: no pulling, no chasing, no
