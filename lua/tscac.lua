@@ -14497,6 +14497,19 @@ end
 -- AAs by target + condition + %. Deferred to a later slice: movement/chase,
 -- puller kiting, hunter roaming, and real bard twisting.
 -- ============================================================================
+
+-- An AA, disc or skill can fire several times a swing, so announcing each one
+-- in chat buried everything else under a wall of green (and the MacroQuest
+-- chat window is only a few hundred pixels wide). Every fire is still recorded
+-- in the log ring, so /ac dump and the log file show exactly what went off;
+-- chat only sees them while Debug Mode is on.
+function runtime.noteFired(kind, name)
+    tlog.info('combat', '%s fired: %s', kind, name)
+    if ctrl and ctrl.debug_mode then
+        print(string.format('\ag[AutoCombat]\ax %s fired: %s', kind, name))
+    end
+end
+
 -- Combat engine: target and condition helpers
 local function baseTok(token)
     local s = tostring(token or '')
@@ -16844,7 +16857,7 @@ function runtime.fireAA(name, a, id)
     runtime.lastCast[key] = now + aaReuse
     runtime.noteAAEffectStarted(name, now)
 
-    print('\ag[AutoCombat]\ax AA fired: ' .. name)
+    runtime.noteFired('AA', name)
     if orig ~= id and orig > 0 and not keepHostile then
         if castMs > 0 then
             runtime.restoreTargetId = orig
@@ -17151,7 +17164,7 @@ runtime.fireDisc = function(name, a, id)
         runtime.timerGroupCooldown[timerGroupId] = now + lockSec
     end
 
-    print('\ag[AutoCombat]\ax discipline fired: ' .. name)
+    runtime.noteFired('discipline', name)
     if not selfCast and orig ~= id then
         mq.delay(60)
         if orig > 0 and mq.TLO.Target.ID() ~= orig then mq.cmdf('/target id %d', orig) end
@@ -17218,7 +17231,7 @@ runtime.fireSkill = function(name, a, id)
     if not runtime.lastSkillFiredAt then runtime.lastSkillFiredAt = {} end
     runtime.lastSkillFiredAt[name] = now
 
-    print('\ag[AutoCombat]\ax skill fired: ' .. name)
+    runtime.noteFired('skill', name)
     if not selfCast and orig > 0 and orig ~= id then
         mq.delay(60)
         if mq.TLO.Target.ID() ~= orig then mq.cmdf('/target id %d', orig) end
@@ -17309,7 +17322,7 @@ runtime.useClickie = function(c, id)
     end
     mq.cmdf('/useitem "%s"', c.name)
     runtime.lastCast[key] = os.clock()
-    print('\ag[AutoCombat]\ax Clickie used: ' .. c.name .. (c.spell and (' (' .. c.spell .. ')') or ''))
+    runtime.noteFired('clickie', c.name .. (c.spell and (' (' .. c.spell .. ')') or ''))
 
     if id and id > 0 then
         local effSpell = (c.spell and c.spell ~= '' and c.spell) or effName

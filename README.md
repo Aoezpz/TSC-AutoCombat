@@ -114,9 +114,27 @@ under **Settings → Box Network**.
 - **Reporting a bug:** turn on **Log To File** (`/ac log on`), and when it
   happens run `/ac dump`. Attach the files from the `Logs\` folder. `/ac debug`
   prints extra detail to chat.
+- **Want to see every ability as it fires?** Turn on **Debug Mode**
+  (`/ac debug`). Normally each AA, disc, skill and clickie is recorded quietly
+  in the log — `/ac dump` still shows exactly what went off — rather than
+  announced in chat, because at a few lines per swing it buried everything else.
 - **Crash on startup?** Do not swap in a MacroQuest you downloaded elsewhere.
   This client is patched, and a stock MacroQuest build crashes the moment it
   loads. Use the one in this folder.
+- **That small "MQ" window with the squashed tabs?** That is MacroQuest's own
+  chat window (MQ2ChatWnd), not this tool. It is 400×200 in the top-left corner
+  the first time you play a server, and it borrows the game's chat-window
+  template — which is why your EQ chat tabs are drawn across it and overlap at
+  that width. Fixes, in order of effort:
+  - **Drag it wider.** The size and position save per character, so you only do
+    it once. `/mqchat reset` brings it back if it ends up off-screen.
+  - `/mqchat SaveByChar off` — one size and position for every character, handy
+    when boxing.
+  - **Turn it off entirely:** `/plugin mq2chatwnd unload`, or set
+    `mq2chatwnd=0` under `[Plugins]` in `config\MacroQuest.ini`. MacroQuest's
+    output then goes to your normal EQ chat windows instead.
+
+  The bot itself no longer writes to it every swing — see below.
 
 ---
 
