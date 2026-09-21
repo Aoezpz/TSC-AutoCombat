@@ -9,9 +9,10 @@ write.
 This repository is a **complete MacroQuest** with the tool already in it.
 Download it, run `MacroQuest.exe`, and log in.
 
-# ⬇ [Download TSC-AutoCombat-v1.0.0.zip](https://github.com/Aoezpz/TSC-AutoCombat/releases/latest/download/TSC-AutoCombat-v1.0.0.zip) (56 MB)
+# ⬇ [Download the latest release](https://github.com/Aoezpz/TSC-AutoCombat/releases/latest)
 
-*(or see [all releases](https://github.com/Aoezpz/TSC-AutoCombat/releases/latest))*
+The zip is about 56 MB — grab it from the **Assets** list on that page.
+([every release](https://github.com/Aoezpz/TSC-AutoCombat/releases))
 
 > **Test build.** It has not had much time in game yet. Please report anything
 > that looks wrong rather than assuming it is meant to work that way.
