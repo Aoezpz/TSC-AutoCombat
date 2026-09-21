@@ -122,15 +122,22 @@ under **Settings → Box Network**.
 - **Crash on startup?** Do not swap in a MacroQuest you downloaded elsewhere.
   This client is patched, and a stock MacroQuest build crashes the moment it
   loads. Use the one in this folder.
-- **Where did MacroQuest's own "MQ" chat window go?** It is switched off on
-  purpose, and MacroQuest's output goes to your normal EQ chat windows instead.
-  That window (MQ2ChatWnd) assumes the stock EQ chat layout — one output box
-  filling the window plus an input line — but this server ships its own chat UI
-  where the chat window is a twelve-tab container. MacroQuest's window therefore
-  came up wearing the server's tab strip while painting its text straight across
-  it and over the input box. Nothing configurable fixes that. If you want it
-  back anyway: `/plugin mq2chatwnd load`, or set `mq2chatwnd=1` under
-  `[Plugins]` in `config\MacroQuest.ini`.
+- **Where does MacroQuest's output go?** To the **MacroQuest console** — press
+  <kbd>Ctrl</kbd>+<kbd>`</kbd> to show or hide it. Everything MacroQuest and its
+  plugins print lands there in one place, instead of scattering across your Say,
+  Tells, WHO and Loot tabs the way it does otherwise. `/mqconsole clear` empties
+  it, and its own menu has autoscroll, opacity and a line limit.
+
+  The console is drawn on the overlay, the same way this tool's windows are, so
+  no chat skin can affect it.
+
+  The old `MQ` chat window (MQ2ChatWnd) is switched **off** on purpose. It
+  assumes the stock EverQuest chat layout — one output box filling the window
+  plus an input line — but this server ships its own chat UI where the chat
+  window is a twelve-page tab container. MacroQuest's window therefore came up
+  wearing a tab strip it did not build and painted its text straight over it and
+  over the input box. Nothing configurable fixes that, and the console does the
+  job better. If you want it back anyway: `/plugin mq2chatwnd load`.
 
 ---
 
