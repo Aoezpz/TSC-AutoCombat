@@ -122,20 +122,15 @@ under **Settings → Box Network**.
 - **Crash on startup?** Do not swap in a MacroQuest you downloaded elsewhere.
   This client is patched, and a stock MacroQuest build crashes the moment it
   loads. Use the one in this folder.
-- **That small "MQ" window with the squashed tabs?** That is MacroQuest's own
-  chat window (MQ2ChatWnd), not this tool. It is 400×200 in the top-left corner
-  the first time you play a server, and it borrows the game's chat-window
-  template — which is why your EQ chat tabs are drawn across it and overlap at
-  that width. Fixes, in order of effort:
-  - **Drag it wider.** The size and position save per character, so you only do
-    it once. `/mqchat reset` brings it back if it ends up off-screen.
-  - `/mqchat SaveByChar off` — one size and position for every character, handy
-    when boxing.
-  - **Turn it off entirely:** `/plugin mq2chatwnd unload`, or set
-    `mq2chatwnd=0` under `[Plugins]` in `config\MacroQuest.ini`. MacroQuest's
-    output then goes to your normal EQ chat windows instead.
-
-  The bot itself no longer writes to it every swing — see below.
+- **Where did MacroQuest's own "MQ" chat window go?** It is switched off on
+  purpose, and MacroQuest's output goes to your normal EQ chat windows instead.
+  That window (MQ2ChatWnd) assumes the stock EQ chat layout — one output box
+  filling the window plus an input line — but this server ships its own chat UI
+  where the chat window is a twelve-tab container. MacroQuest's window therefore
+  came up wearing the server's tab strip while painting its text straight across
+  it and over the input box. Nothing configurable fixes that. If you want it
+  back anyway: `/plugin mq2chatwnd load`, or set `mq2chatwnd=1` under
+  `[Plugins]` in `config\MacroQuest.ini`.
 
 ---
 
